@@ -9,6 +9,7 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
+/ApkUtils_BurstDebugInformation_DoNotShip/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -60,6 +61,7 @@ sysinfo.txt
 *.aab
 *.unitypackage
 *.app
+/.utmp/*
 
 # Crashlytics generated file
 crashlytics-build.properties
