@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class Example : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private string _downloadUrl= "";
+    private string _downloadUrl = "https://download1652.mediafire.com/0ze6c598oeggeP5_rg4RKgw2EXJowte8yO3Zo7mU4-JSHcjtyo0b9ey1VbxYfo1L-1M0OiNKPL73uitHcSinKOXQfdmqW_7bJM2Vl4vSv3rKyqT6j_2_uwwuZKPggd2TZj0M_DcXcre_NKIILbjNq6Nk4KBQXr8g7poTKEKZ4R8/grel6demphrfwcs/mi-calculator-15-2-11.apk";
     private string _downloadFolderPath;
 
     private string _apkpath;
@@ -20,7 +20,7 @@ public class Example : MonoBehaviour
     private void Start()
     {
 
-        _downloadFolderPath = Path.Combine(Application.persistentDataPath,"DownloadedGame");
+        _downloadFolderPath = Path.Combine(Application.persistentDataPath, "DownloadedGame");
         _apkpath = Path.Combine(_downloadFolderPath, Path.GetFileName(_downloadUrl));
 
     }
@@ -30,7 +30,7 @@ public class Example : MonoBehaviour
         // Recreate the download folder.
         if (Directory.Exists(_downloadFolderPath))
         {
-            Directory.Delete(_downloadFolderPath,true);
+            Directory.Delete(_downloadFolderPath, true);
         }
         Directory.CreateDirectory(_downloadFolderPath);
 
@@ -81,7 +81,7 @@ public class Example : MonoBehaviour
             _debug.text = "Package name is empty. Please again download apk or click on get Pkg from path btn";
             return;
         }
-       
+
         ApkUtils.UninstallApp(packageName, (result) =>
         {
             if (result == true)
@@ -103,7 +103,7 @@ public class Example : MonoBehaviour
         }
         if (!ApkUtils.IsAppInstalled(packageName))
         {
-            _debug.text = packageName+" the app with this package name is now installed";
+            _debug.text = packageName + " the app with this package name is not installed";
             return;
         }
         _debug.text = " launching app...";
@@ -114,7 +114,7 @@ public class Example : MonoBehaviour
 
         if (!File.Exists(_apkpath))
         {
-            _debug.text = "Apk not found in path: " + _apkpath;
+            _debug.text = "Apk not found in path: " + _apkpath + " Please Download";
             return;
         }
 
@@ -134,7 +134,7 @@ public class Example : MonoBehaviour
         }
         if (!ApkUtils.IsAppInstalled(packageName))
         {
-            _debug.text = packageName + " the app with this package name is now installed";
+            _debug.text = packageName + " the app with this package name is not installed";
             return;
         }
         _debug.text = $" Version is {ApkUtils.GetInstalledAppVersion(packageName)}";
@@ -158,8 +158,8 @@ public class Example : MonoBehaviour
             }
             while (!webRequest.isDone)
             {
-                float percent = webRequest.downloadProgress*100;
-                _debug.text = "Downloading..."+ percent.ToString()+"%";
+                float percent = webRequest.downloadProgress * 100;
+                _debug.text = "Downloading..." + percent.ToString() + "%";
                 yield return null;
             }
 
