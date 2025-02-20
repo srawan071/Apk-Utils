@@ -75,10 +75,11 @@ This project provides a set of utilities for handling APK files on Android devic
   - `Assets/Scripts/ApkUtils.cs`
 
 ### FileProvider Configuration
+```
 In the AndroidManifest.xml, locate the FileProvider configuration and update the android:authorities attribute by replacing "com.Srawan.ApkUtils" with your app's actual package name. The final value should follow this format:
-`
+
 android:authorities="yourPackageName.fileprovider"
-`
+```
 
 ## Example Usage
 
@@ -121,7 +122,9 @@ if (!ApkUtils.HasInstallPermission()) {
     ApkUtils.RequestInstallPermission();
 } else {
     Debug.Log("App has permission to install APKs.");
-}## Notes
+}
+```
+## Notes
 
 - **Android Permissions:** This utility assumes that the necessary permissions to access external storage and install APKs have been requested and granted on Android devices.
 - **Platform Support:** This utility is designed to work specifically on Android builds and will not work on other platforms.
