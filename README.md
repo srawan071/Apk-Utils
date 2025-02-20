@@ -61,20 +61,24 @@ This project provides a set of utilities for handling APK files on Android devic
 
 ## Setup
 
-1. **Import the APK Utilities**:
-   - Import the `ApkUtils` class into your Unity project.
-   
-2. **Permissions**:
-   - The APK utilities may require permissions to install APKs or access external storage.
-   - The `HasInstallPermission()` and `RequestInstallPermission()` methods can be used to handle these permissions.
+### Cloning the Repository
+- If you clone this repository, everything will work without any additional setup. You can directly use the provided utility methods within your project.
 
-3. **Add Necessary Android Permissions**:
-   - In your Unity project's `AndroidManifest.xml`, ensure the following permissions are added:
-     ```xml
-     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-     ```
+### Importing into Your Project
+- If you are importing the utility into an existing Unity project, ensure that you also import the following files to make everything work:
+  - `Assets/Editor/BuildPostProcessor/PostBuildScript.cs`
+  - `Assets/Editor/BuildPostProcessor/file_paths.xml`
+  - `Assets/Plugins/Android/AndroidManifest.xml`
+  - `Assets/Plugins/Android/gradleTemplate.properties`
+  - `Assets/Plugins/Android/launcherTemplate.gradle`
+  - `Assets/Plugins/Android/mainTemplate.gradle`
+  - `Assets/Scripts/ApkUtils.cs`
+
+### FileProvider Configuration
+In the AndroidManifest.xml, locate the FileProvider configuration and update the android:authorities attribute by replacing "com.Srawan.ApkUtils" with your app's actual package name. The final value should follow this format:
+`
+android:authorities="yourPackageName.fileprovider"
+`
 
 ## Example Usage
 
@@ -117,23 +121,13 @@ if (!ApkUtils.HasInstallPermission()) {
     ApkUtils.RequestInstallPermission();
 } else {
     Debug.Log("App has permission to install APKs.");
-}
-Notes
-Android Permissions: This utility assumes that the necessary permissions to access external storage and install APKs have been requested and granted on Android devices.
-Platform Support: This utility is designed to work specifically on Android and will not work on other platforms.
-Error Handling: Methods like InstallApk and UninstallApp handle exceptions and errors internally and log appropriate messages to the Unity console.
-API Level: The utility supports Android API level 21 and above for the installation and permission management functionality.
-License
+}## Notes
+
+- **Android Permissions:** This utility assumes that the necessary permissions to access external storage and install APKs have been requested and granted on Android devices.
+- **Platform Support:** This utility is designed to work specifically on Android builds and will not work on other platforms.
+- **Error Handling:** Methods like `InstallApk` and `UninstallApp` handle exceptions and errors internally and log appropriate messages to the Unity console.
+- **API Level:** The utility supports Android API level 21 and above for the installation and permission management functionality.
+
+## License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-vbnet
-Copy
-Edit
-
-Now the entire README is properly formatted with markdown! Let me know if you'd like to make any other changes.
-
-
-
-
-
-
