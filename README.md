@@ -75,11 +75,12 @@ This project provides a set of utilities for handling APK files on Android devic
   - `Assets/Scripts/ApkUtils.cs`
 
 ### FileProvider Configuration
-```
+
 In the AndroidManifest.xml, locate the FileProvider configuration and update the android:authorities attribute by replacing "com.Srawan.ApkUtils"
 with your app's actual package name. The final value should follow this format:
-
+```
 android:authorities="yourPackageName.fileprovider"
+
 ```
 
 ## Example Usage
